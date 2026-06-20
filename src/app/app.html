@@ -1,0 +1,32 @@
+<div class="min-h-screen bg-gray-50 flex flex-col font-sans">
+  <!-- Navigation Bar -->
+  <header class="bg-white shadow-sm border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <div class="flex-shrink-0 flex items-center">
+            <span class="font-bold text-xl text-primary-600">{{ appName }}</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-4">
+          @if (auth.isLoaded()) {
+            @if (auth.isSignedIn()) {
+              @if (auth.userProfile()?.role === 'therapist' || auth.userProfile()?.role === 'client' || auth.userProfile()?.role === 'admin') {
+                <p-button label="Change Role" severity="secondary" size="small" [text]="true" (onClick)="changeRole()"></p-button>
+              }
+              <p-button label="Sign Out" severity="secondary" size="small" (onClick)="auth.signOut()"></p-button>
+            } @else {
+              <a href="/login"><p-button label="Sign In" size="small"></p-button></a>
+            }
+          }
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="flex-1 max-w-7xl w-full mx-auto py-6 sm:px-6 lg:px-8">
+    <!-- Router Outlet -->
+    <router-outlet></router-outlet>
+  </main>
+</div>

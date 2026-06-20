@@ -1,0 +1,24 @@
+[build]
+  command = "pnpm build"
+  publish = "dist/web/browser"
+
+[build.environment]
+  NODE_VERSION = "20"
+  NG_APP_ENV = "production"
+  NG_APP_API_BASE_URL = "https://ot-assistant-api.rasoulveisi.workers.dev/api/v1"
+  NG_APP_CLERK_PUBLISHABLE_KEY = "pk_test_c2V0dGxlZC1iYWRnZXItNjEuY2xlcmsuYWNjb3VudHMuZGV2JA"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+    [headers.values]
+      X-Frame-Options = "DENY"
+      X-Content-Type-Options = "nosniff"
+      X-XSS-Protection = "1; mode=block"
+      Referrer-Policy = "strict-origin-when-cross-origin"
+      Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+      Content-Security-Policy = "default-src 'self' https://*.clerk.accounts.dev; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.clerk.accounts.dev; connect-src 'self' https://*.clerk.accounts.dev https://ot-assistant-api.rasoulveisi.workers.dev; img-src 'self' data: https://*.clerk.com https://images.clerk-cdn.com https://img.clerk.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com;"
