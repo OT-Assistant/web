@@ -7,4 +7,6 @@ allowBuilds:
   esbuild: true
   lmdb: true
   msgpackr-extract: true
+  sharp: true
   utf-8-validate: true
+  workerd: true

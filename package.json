@@ -8,7 +8,9 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "prebuild": "node scripts/write-runtime-config.mjs",
-    "sync:config": "node scripts/write-runtime-config.mjs"
+    "sync:config": "node scripts/write-runtime-config.mjs",
+    "deploy": "NG_APP_ENV=development NG_APP_API_BASE_URL=http://localhost:8787/api/v1 NG_APP_CLERK_PUBLISHABLE_KEY=pk_test_c2V0dGxlZC1iYWRnZXItNjEuY2xlcmsuYWNjb3VudHMuZGV2JA pnpm build && wrangler pages deploy",
+    "deploy:prod": "NG_APP_ENV=production NG_APP_API_BASE_URL=https://ot-api-dev.otconnect.ir/api/v1 NG_APP_CLERK_PUBLISHABLE_KEY=pk_test_c2V0dGxlZC1iYWRnZXItNjEuY2xlcmsuYWNjb3VudHMuZGV2JA pnpm build && wrangler pages deploy --branch production"
   },
   "private": true,
   "packageManager": "pnpm@11.5.1",
@@ -39,7 +41,8 @@
     "prettier": "^3.8.1",
     "tailwindcss": "^4.3.1",
     "typescript": "~5.9.2",
-    "vitest": "^4.0.8"
+    "vitest": "^4.0.8",
+    "wrangler": "^3.87.0"
   },
   "resolutions": {
     "@clerk/shared": "4.14.0"

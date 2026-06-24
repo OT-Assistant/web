@@ -1,0 +1,19 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "ot-assistant-web",
+  "pages_build_output_dir": "dist/web/browser",
+  "vars": {
+    "NG_APP_ENV": "development",
+    "NG_APP_API_BASE_URL": "http://localhost:8787/api/v1",
+    "NG_APP_CLERK_PUBLISHABLE_KEY": "YOUR_CLERK_PUBLISHABLE_KEY"
+  },
+  "env": {
+    "production": {
+      "vars": {
+        "NG_APP_ENV": "production",
+        "NG_APP_API_BASE_URL": "https://api.example.com/api/v1",
+        "NG_APP_CLERK_PUBLISHABLE_KEY": "YOUR_PRODUCTION_CLERK_PUBLISHABLE_KEY"
+      }
+    }
+  }
+}

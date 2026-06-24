@@ -42,3 +42,16 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+
+# Generated runtime config
+public/config.js
+
+# Wrangler configuration
+wrangler.jsonc
+.wrangler/
+
+# Environment configurations
+.env
+.env.*
+!.env.example
+
